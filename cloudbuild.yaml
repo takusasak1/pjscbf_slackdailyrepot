@@ -1,0 +1,18 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: [
+      "build",
+      "-t","asia-northeast1-docker.pkg.dev/light-team-474100-h7/pjscbfslackdailyreport/job-image:$SHORT_SHA",
+      "."
+    ]
+  - name: gcr.io/cloud-builders/docker
+    args: [
+      "tag",
+      "asia-northeast1-docker.pkg.dev/light-team-474100-h7/pjscbfslackdailyreport/job-image:$SHORT_SHA",
+      "asia-northeast1-docker.pkg.dev/light-team-474100-h7/pjscbfslackdailyreport/job-image:latest"
+    ]
+images:
+  - "asia-northeast1-docker.pkg.dev/light-team-474100-h7/pjscbfslackdailyreport/job-image:$SHORT_SHA"
+  - "asia-northeast1-docker.pkg.dev/light-team-474100-h7/pjscbfslackdailyreport/job-image:latest"
+options:
+  logging: CLOUD_LOGGING_ONLY
